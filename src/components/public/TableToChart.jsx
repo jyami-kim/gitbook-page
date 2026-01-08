@@ -309,6 +309,38 @@ export default function ExpensePieChart() {
         {/* Chart View */}
         {activeTab === 'chart' && (
           <>
+            {/* Total Summary */}
+            <div style={{
+              background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(245, 158, 11, 0.2) 100%)',
+              borderRadius: '16px',
+              padding: '20px',
+              marginBottom: '20px',
+              textAlign: 'center',
+              border: '1px solid rgba(255,255,255,0.1)',
+            }}>
+              <p style={{
+                margin: 0,
+                fontSize: '12px',
+                color: 'rgba(255,255,255,0.5)',
+                textTransform: 'uppercase',
+                letterSpacing: '2px',
+                marginBottom: '6px',
+              }}>
+                총합
+              </p>
+              <p style={{
+                margin: 0,
+                fontSize: '34px',
+                fontWeight: 800,
+                background: 'linear-gradient(135deg, #fff 0%, #86efac 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                letterSpacing: '-1px',
+              }}>
+                {formatCurrency(computedTotal, unit)}
+              </p>
+            </div>
+
             <div style={{ width: '100%', height: '320px', position: 'relative', marginBottom: '20px' }}>
           <ResponsiveContainer>
             <PieChart>
