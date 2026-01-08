@@ -224,7 +224,7 @@ export default function ExpensePieChart() {
         boxShadow: '0 25px 80px rgba(0, 0, 0, 0.4)',
         padding: '36px 28px',
         position: 'relative',
-        overflow: 'hidden',
+        overflow: 'visible',
       }}>
         {/* Glow effects */}
         <div style={{
@@ -543,71 +543,84 @@ export default function ExpensePieChart() {
               {items.map((item, index) => (
                 <div key={item.id} style={{
                   display: 'flex',
-                  gap: '12px',
+                  gap: '8px',
                   alignItems: 'center',
-                  padding: '14px 16px',
+                  padding: '12px 14px',
                   background: 'rgba(255,255,255,0.03)',
                   border: '1px solid rgba(255,255,255,0.05)',
                   borderRadius: '12px',
                   transition: 'all 0.2s',
+                  minWidth: 0,
                 }}>
                   {/* Color Indicator */}
                   <div style={{
-                    width: '6px',
-                    height: '40px',
-                    borderRadius: '3px',
+                    width: '4px',
+                    height: '32px',
+                    borderRadius: '2px',
                     background: COLORS[index % 10],
-                    boxShadow: `0 0 12px ${COLORS[index % 10]}50`,
+                    boxShadow: `0 0 8px ${COLORS[index % 10]}50`,
                     flexShrink: 0,
                   }} />
 
-                  {/* Name Input */}
-                  <input
-                    type="text"
-                    value={item.name}
-                    onChange={(e) => handleUpdateItem(item.id, 'name', e.target.value.slice(0, 20))}
-                    placeholder="항목명"
-                    maxLength="20"
-                    style={{
-                      flex: 0.4,
-                      padding: '10px 14px',
-                      background: 'rgba(255,255,255,0.05)',
-                      border: '1px solid rgba(255,255,255,0.1)',
-                      borderRadius: '8px',
-                      color: '#fff',
-                      fontSize: '13px',
-                      fontFamily: 'inherit',
-                      outline: 'none',
-                    }}
-                  />
+                  {/* Name and Value Container */}
+                  <div style={{
+                    display: 'flex',
+                    gap: '12px',
+                    flex: 0.9,
+                    alignItems: 'center',
+                    minWidth: '0',
+                  }}>
+                    {/* Name Input */}
+                    <input
+                      type="text"
+                      value={item.name}
+                      onChange={(e) => handleUpdateItem(item.id, 'name', e.target.value.slice(0, 20))}
+                      placeholder="항목명"
+                      maxLength="20"
+                      style={{
+                        flex: 1,
+                        minWidth: '50px',
+                        padding: '8px 10px',
+                        background: 'rgba(255,255,255,0.05)',
+                        border: '1px solid rgba(255,255,255,0.1)',
+                        borderRadius: '6px',
+                        color: '#fff',
+                        fontSize: '12px',
+                        fontFamily: 'inherit',
+                        outline: 'none',
+                      }}
+                    />
 
-                  {/* Value Input */}
-                  <input
-                    type="number"
-                    value={item.value === 0 ? '' : item.value}
-                    onChange={(e) => handleUpdateItem(item.id, 'value', e.target.value === '' ? 0 : Number(e.target.value))}
-                    placeholder="수치"
-                    min="0"
-                    style={{
-                      flex: 0.3,
-                      padding: '10px 14px',
-                      background: 'rgba(255,255,255,0.05)',
-                      border: '1px solid rgba(255,255,255,0.1)',
-                      borderRadius: '8px',
-                      color: '#fff',
-                      fontSize: '13px',
-                      fontFamily: 'inherit',
-                      outline: 'none',
-                    }}
-                  />
+                    {/* Value Input */}
+                    <input
+                      type="number"
+                      value={item.value === 0 ? '' : item.value}
+                      onChange={(e) => handleUpdateItem(item.id, 'value', e.target.value === '' ? 0 : Number(e.target.value))}
+                      placeholder="수치"
+                      min="0"
+                      style={{
+                        flex: 1,
+                        minWidth: '45px',
+                        padding: '8px 10px',
+                        background: 'rgba(255,255,255,0.05)',
+                        border: '1px solid rgba(255,255,255,0.1)',
+                        borderRadius: '6px',
+                        color: '#fff',
+                        fontSize: '12px',
+                        fontFamily: 'inherit',
+                        outline: 'none',
+                      }}
+                    />
+                  </div>
 
                   {/* Percentage Display */}
                   <div style={{
-                    flex: 0.25,
+                    flex: 0.1,
                     textAlign: 'right',
-                    fontSize: '12px',
+                    fontSize: '11px',
                     fontWeight: 600,
-                    color: 'rgba(255,255,255,0.7)',
+                    color: 'rgba(255,255,255,0.6)',
+                    minWidth: '28px',
                   }}>
                     {computedTotal > 0 && Number(item.value) > 0
                       ? ((Number(item.value) / computedTotal) * 100).toFixed(1) + '%'
@@ -619,15 +632,20 @@ export default function ExpensePieChart() {
                     <button
                       onClick={() => handleRemoveItem(item.id)}
                       style={{
-                        padding: '8px 12px',
+                        padding: '6px 8px',
                         background: 'rgba(239, 68, 68, 0.1)',
                         border: '1px solid rgba(239, 68, 68, 0.2)',
-                        borderRadius: '6px',
-                        color: 'rgba(239, 68, 68, 0.8)',
-                        fontSize: '13px',
+                        borderRadius: '5px',
+                        color: 'rgba(239, 68, 68, 0.7)',
+                        fontSize: '11px',
                         cursor: 'pointer',
                         transition: 'all 0.2s',
                         flexShrink: 0,
+                        width: '28px',
+                        height: '28px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
                       }}
                     >
                       ✕
