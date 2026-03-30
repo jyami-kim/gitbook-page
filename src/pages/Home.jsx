@@ -10,6 +10,20 @@ export default function Home() {
       description: 'Convert table data to interactive circle chart visualization',
       path: '/table-to-chart',
       tags: ['chart', 'visualization']
+    },
+    {
+      id: 'text-flow',
+      title: 'Pretext Text Flow',
+      description: 'DOM-free text layout with obstacle avoidance using Pretext library',
+      path: '/text-flow',
+      tags: ['pretext', 'text-layout', 'canvas']
+    },
+    {
+      id: 'text-hourglass',
+      title: '한글 모래시계',
+      description: 'Korean text falling like sand through an hourglass timer',
+      path: '/text-hourglass',
+      tags: ['animation', 'physics', 'timer', 'korean']
     }
   ]
 
