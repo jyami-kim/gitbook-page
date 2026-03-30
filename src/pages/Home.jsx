@@ -17,13 +17,6 @@ export default function Home() {
       description: 'DOM-free text layout with obstacle avoidance using Pretext library',
       path: '/text-flow',
       tags: ['pretext', 'text-layout', 'canvas']
-    },
-    {
-      id: 'text-hourglass',
-      title: '한글 모래시계',
-      description: 'Korean text falling like sand through an hourglass timer',
-      path: '/text-hourglass',
-      tags: ['animation', 'physics', 'timer', 'korean']
     }
   ]
 
